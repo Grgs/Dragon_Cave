@@ -13,10 +13,15 @@ public class Main {
         String goodOutcome = "You approach the cave ...%nYou see a sleeping dragon ...%nYou pass without incident";
         System.out.print(String.format(intro));
 
-        String answer;
+        String answer = "";
         do {
             System.out.println("Which cave will you go into?");
-            answer = in.nextLine();
+            try{
+                answer = in.nextLine();
+            } catch (IllegalStateException e){
+                System.out.println("Error: Java scanner is closed; " + e.getMessage());
+                System.exit(1);
+            }
         } while(!answer.equals("0") && !answer.equals("1"));
 
         if (answer.equals("1")) {

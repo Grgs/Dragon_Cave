@@ -16,9 +16,17 @@ class GameStateTest {
     @Test
     void getGameState() {
         assertEquals(State.NULL, state.getGameState());
+        state.gameState = State.LOST;
+        assertEquals(State.LOST, state.getGameState());
     }
 
     @Test
     void setAnswer() {
+        state.setAnswer("0");
+        assertEquals(State.WON, state.getGameState());
+        state.setAnswer("1");
+        assertEquals(State.LOST, state.getGameState());
+        state.setAnswer("2");
+        assertEquals(State.INVALID, state.getGameState());
     }
 }
